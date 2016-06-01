@@ -10,10 +10,17 @@
 
   </head>
   <body ng-controller="SocialController as social">
-    <div ng-repeat="actor in social.activities">
-      <p>
-        {{actor.actor_username}}
-      </p>
+    <div class="container">
+    <div class="page-header">
+      <h1>Social UI <small>by Hunter Beckmann</small></h1>
+    </div>
+      <div ng-repeat="actor in social.activities">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{actor.actor_username}}
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
