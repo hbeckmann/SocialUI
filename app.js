@@ -1,12 +1,12 @@
 angular.module('SocialUI', [])
-  .controller('SocialController', ['$http', function($http){
+  .controller('SocialController', ['$http', function($http) {
 
     var self = this;
     self.test = "Hello World";
     self.activities;
     self.getActivities = function() {
       $http.get('https://nuvi-challenge.herokuapp.com/activities')
-      .then(function(res){
+      .then(function(res) {
         console.dir(res.data);
         self.activities = res.data;
       },
