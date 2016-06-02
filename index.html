@@ -17,11 +17,26 @@
       <div ng-repeat="actor in social.activities">
         <div class="panel panel-default">
           <div class="panel-body">
-            <span class="label label-primary" ng-if="actor.provider === 'facebook'">Facebook</span>
-            <span class="label label-info" ng-if="actor.provider === 'twitter'">Twitter</span>
-            <span class="label label-success" ng-if="actor.provider === 'instagram'">Instagram</span>
-            <span class="label label-primary" ng-if="actor.provider === 'tumblr'">Tumblr</span>
-            {{actor.actor_username}}
+
+            <div class="row">
+              <div class="col-sm-4">
+                <span class="label label-primary" ng-if="actor.provider === 'facebook'">Facebook</span>
+                <span class="label label-info" ng-if="actor.provider === 'twitter'">Twitter</span>
+                <span class="label label-success" ng-if="actor.provider === 'instagram'">Instagram</span>
+                <span class="label label-primary" ng-if="actor.provider === 'tumblr'">Tumblr</span>
+                {{actor.actor_username}}
+              </div>
+              <div class="col-sm-4 col-sm-offset-4">
+                <p class="text-right">{{actor.activity_date}}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="media">
+                <img class="media-object" ng-src="{{actor.actor_avator}}" width="64"/>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
