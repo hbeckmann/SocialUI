@@ -19,8 +19,13 @@ angular.module('SocialUI', [])
     self.sortDate = function() {
 
       self.activities.map(function(obj) {
-        var rawDate = obj.activity_date.split("-").join("");
+        var rawDate = parseInt(obj.activity_date.split("-").join(""));
+        var formattedDate = obj.activity_date.split("-");
+        formattedDate.push(formattedDate.shift());
+        formattedDate = formattedDate.join("/");
+
         obj.activity_date_raw = rawDate;
+        obj.activity_date_formatted = formattedDate;
         return obj;
       });
 
