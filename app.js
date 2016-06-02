@@ -2,6 +2,8 @@ angular.module('SocialUI', [])
   .controller('SocialController', ['$http', function($http) {
 
     var self = this;
+    var currentfilter = 'newest';
+    self.activities_filtered;
     self.activities;
 
     self.getActivities = function() {
@@ -17,7 +19,6 @@ angular.module('SocialUI', [])
     };
 
     self.sortDate = function() {
-
       self.activities.map(function(obj) {
         var rawDate = parseInt(obj.activity_date.split("-").join(""));
         var formattedDate = obj.activity_date.split("-");
@@ -32,7 +33,25 @@ angular.module('SocialUI', [])
       self.activities.sort(function(a, b) {
         return a.activity_date_raw - b.activity_date_raw;
       });
+      self.activities_filtered = self.activities;
+    };
 
+    self.filter = function(params) {
+      switch(params) {
+        case 'oldest':
+          if(currentfilter !== 'oldest') {
+            self.activities_filtered.reverse();
+            currentfilter = 'oldest';
+          };
+          break;
+
+        case 'newest':
+          if(currentfilter !== 'newest') {
+            self.activities_filtered.reverse();
+            currentfilter = 'newest';
+          };
+          break;
+      }
     };
 
     self.getActivities();

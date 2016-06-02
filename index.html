@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Social UI Exercise | Hunter Beckmann</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
@@ -12,9 +13,19 @@
   <body ng-controller="SocialController as social">
     <div class="container">
     <div class="page-header">
-      <h1>Social UI <small>by Hunter Beckmann</small></h1>
+      <h1>Social UI <small>by Hunter Beckmann</small>
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" ng-click="social.filter('newest')">Newest - Oldest</a></li>
+            <li><a href="#" ng-click="social.filter('oldest')">Oldest - Newest</a></li>
+          </ul>
+        </div>
+      </h1>
     </div>
-      <div ng-repeat="actor in social.activities">
+      <div ng-repeat="actor in social.activities_filtered">
         <div class="panel panel-default">
           <div class="panel-body">
 
@@ -35,8 +46,8 @@
               <div class="col-sm-2">
                 <img class="media-object" ng-src="{{actor.actor_avator}}" width="64"/>
               </div>
-              <div class="col-sm-10 panel panel-default">
-                <span ng-if="(actor.provider === 'facebook' || actor.provider === 'twitter') && actor.activity_message.indexOf('http') === -1 ">{{actor.activity_message}}</span>
+              <div class="col-sm-8 panel panel-default">
+                <span ng-if="actor.activity_message.indexOf('http') === -1 ">{{actor.activity_message}}</span>
               </div>
             </div>
 
