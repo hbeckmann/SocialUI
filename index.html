@@ -23,9 +23,22 @@
             <li><a href="#" ng-click="social.filter('oldest')">Oldest - Newest</a></li>
           </ul>
         </div>
+
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Provider <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#" ng-click="social.filter('newest')">Facebook</a></li>
+            <li><a href="#" ng-click="social.filter('oldest')">Twitter</a></li>
+            <li><a href="#" ng-click="social.filter('oldest')">Tmblr</a></li>
+            <li><a href="#" ng-click="social.filter('oldest')">Instagram</a></li>
+          </ul>
+        </div>
+
       </h1>
     </div>
-      <div ng-repeat="actor in social.activities_filtered">
+      <div ng-repeat="actor in social.activities_filtered | limitTo:social.viewingLimit.limit">
         <div class="panel panel-default">
           <div class="panel-body">
 
@@ -35,7 +48,7 @@
                 <span class="label label-info" ng-if="actor.provider === 'twitter'">Twitter</span>
                 <span class="label label-success" ng-if="actor.provider === 'instagram'">Instagram</span>
                 <span class="label label-primary" ng-if="actor.provider === 'tumblr'">Tumblr</span>
-                {{actor.actor_username}}
+                <a href="{{actor.actor_url}}">{{actor.actor_username}}</a>
               </div>
               <div class="col-sm-4 col-sm-offset-4">
                 <p class="text-right">{{actor.activity_date_formatted}}</p>
@@ -44,16 +57,22 @@
 
             <div class="row">
               <div class="col-sm-2">
-                <img class="media-object" ng-src="{{actor.actor_avator}}" width="64"/>
+                <a href="{{actor.actor_url}}"><img class="media-object" ng-src="{{actor.actor_avator}}" width="64"/></a>
               </div>
               <div class="col-sm-8 panel panel-default">
                 <span ng-if="actor.activity_message.indexOf('http') === -1 ">{{actor.activity_message}}</span>
+                <span ng-if="actor.activity_message.indexOf('http') > -1 "><img class="img-responsive" ng-src="{{actor.activity_message}}" /></span>
               </div>
             </div>
 
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <button type="button" ng-click="social.viewingLimit.add()" class="btn btn-primary col-xs-4 col-xs-offset-4" style="margin-bottom: 50px;">See More</button>
+      </div>
+
     </div>
   </body>
 </html>

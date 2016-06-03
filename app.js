@@ -3,6 +3,12 @@ angular.module('SocialUI', [])
 
     var self = this;
     var currentfilter = 'newest';
+    self.viewingLimit = {
+      limit: 10,
+      add: function() {
+        this.limit += 10
+      }
+    };
     self.activities_filtered;
     self.activities;
 
