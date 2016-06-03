@@ -2,7 +2,7 @@ angular.module('SocialUI', [])
   .controller('SocialController', ['$http', function($http) {
 
     var self = this;
-    var currentfilter = 'newest';
+    var currentfilter = 'oldest';
     self.viewingLimit = {
       limit: 10,
       add: function() {
