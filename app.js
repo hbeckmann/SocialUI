@@ -42,7 +42,7 @@ angular.module('SocialUI', [])
       self.activities_filtered = self.activities;
     };
 
-    self.filter = function(params) {
+    self.filterActivity = function(params) {
       switch(params) {
         case 'oldest':
           if(currentfilter !== 'oldest') {
@@ -57,6 +57,18 @@ angular.module('SocialUI', [])
             currentfilter = 'newest';
           };
           break;
+
+        default:
+            self.activities_filtered = self.activities;
+            if(params !== "all") {
+            self.activities_filtered = self.activities_filtered.filter(function(obj) {
+              if(obj.provider === params) {
+                return true;
+              }
+            });
+            };
+          break;
+
       }
     };
 

@@ -19,8 +19,8 @@
             Sort <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#" ng-click="social.filter('newest')">Newest - Oldest</a></li>
-            <li><a href="#" ng-click="social.filter('oldest')">Oldest - Newest</a></li>
+            <li><a href="#" ng-click="social.filterActivity('newest')">Newest - Oldest</a></li>
+            <li><a href="#" ng-click="social.filterActivity('oldest')">Oldest - Newest</a></li>
           </ul>
         </div>
 
@@ -29,10 +29,12 @@
             Provider <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#" ng-click="social.filter('newest')">Facebook</a></li>
-            <li><a href="#" ng-click="social.filter('oldest')">Twitter</a></li>
-            <li><a href="#" ng-click="social.filter('oldest')">Tmblr</a></li>
-            <li><a href="#" ng-click="social.filter('oldest')">Instagram</a></li>
+            <li><a href="#" ng-click="social.filterActivity('all')">All</a></li>
+            <li class="divider"></li>
+            <li><a href="#" ng-click="social.filterActivity('facebook')">Facebook</a></li>
+            <li><a href="#" ng-click="social.filterActivity('twitter')">Twitter</a></li>
+            <li><a href="#" ng-click="social.filterActivity('tumblr')">Tmblr</a></li>
+            <li><a href="#" ng-click="social.filterActivity('instagram')">Instagram</a></li>
           </ul>
         </div>
 
