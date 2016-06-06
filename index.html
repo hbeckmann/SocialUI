@@ -67,6 +67,14 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="form-group col-sm-8 col-sm-offset-2">
+                <p class="text-right">{{actor.activity_likes}} Likes &nbsp;{{actor.activity_shares}} Shares  &nbsp;<a ng-click="social.reply($index)" style="cursor: pointer">Comment</a> </p>
+                <label ng-show="social.comment[$index]" for="comment">Reply:</label>
+                <textarea ng-show="social.comment[$index]" class="form-control" rows="2" id="comment"></textarea>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

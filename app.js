@@ -11,6 +11,7 @@ angular.module('SocialUI', [])
     };
     self.activities_filtered;
     self.activities;
+    self.comment = [];
 
     self.getActivities = function() {
       $http.get('https://nuvi-challenge.herokuapp.com/activities')
@@ -70,6 +71,10 @@ angular.module('SocialUI', [])
           break;
 
       }
+    };
+
+    self.reply = function(index)  {
+      self.comment[index] = true;
     };
 
     self.getActivities();
